@@ -34,24 +34,24 @@ class hw_encoder:
         return self.transform(germplasm)
         
         
-def encode_hardy_weinberg(germplasm, homoGeno_1, homoGeno_2, heteroGeno):
-    d = germplasm == homoGeno_1
-    d = d.sum()
-    h = germplasm == heteroGeno
-    h = h.sum()
+# def encode_hardy_weinberg(germplasm, homoGeno_1, homoGeno_2, heteroGeno):
+#     d = germplasm == homoGeno_1
+#     d = d.sum()
+#     h = germplasm == heteroGeno
+#     h = h.sum()
 
-    p = (2 * d + h) / (2 * len(germplasm))
-    q = 1 - p
-    _2pq = 2 * p * q
-    p_square = p ** 2
-    q_square = q ** 2
+#     p = (2 * d + h) / (2 * len(germplasm))
+#     q = 1 - p
+#     _2pq = 2 * p * q
+#     p_square = p ** 2
+#     q_square = q ** 2
 
-    for col in germplasm:
-        germplasm[col] = germplasm[col].replace(homoGeno_1, p_square[col])
-        germplasm[col] = germplasm[col].replace(homoGeno_2, q_square[col])
-        germplasm[col] = germplasm[col].replace(heteroGeno, _2pq[col])
+#     for col in germplasm:
+#         germplasm[col] = germplasm[col].replace(homoGeno_1, p_square[col])
+#         germplasm[col] = germplasm[col].replace(homoGeno_2, q_square[col])
+#         germplasm[col] = germplasm[col].replace(heteroGeno, _2pq[col])
 
-    return germplasm
+#     return germplasm
 
 def encode_one_hot(germplasm, categories):
     enc = OneHotEncoder(handle_unknown='ignore', sparse=False)
